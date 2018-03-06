@@ -43,10 +43,10 @@
     </tr>
   </tbody>
 </table>
-<!--
+
 <h1 class="mt-2">Get Single Author</h1>
-<p>{{ author$ | async | json }}</p>
-<ul class="list-group" *ngIf="author$ | async as author">
+<p>{{ author | async | json }}</p>
+<ul class="list-group" *ngIf="author | async as author">
   <li class="list-group-item">
     {{ author.name }}
   </li>
@@ -56,4 +56,4 @@
   <li class="list-group-item">
     {{ author.isPremium }}
   </li>
-</ul> -->
+</ul>

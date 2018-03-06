@@ -10,6 +10,7 @@ import { Observable } from 'rxjs/Observable';
 export class HomeComponent {
   coursesRef: AngularFireList<any>;
   courses: Observable<any[]>;
+  author: Observable<any>;
 
   constructor(db: AngularFireDatabase) {
     this.coursesRef = db.list('courses');
@@ -17,6 +18,7 @@ export class HomeComponent {
     this.courses = this.coursesRef.snapshotChanges().map(changes => {
       return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }));
     });
+    this.author = db.object('authors/1').valueChanges();
   }
   addCourse(course) {
     this.coursesRef.push({
