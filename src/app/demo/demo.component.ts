@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
-import { transition, style, trigger, animate } from '@angular/animations';
+import { transition, style, trigger, animate, state } from '@angular/animations';
 
 @Component({
   selector: 'app-demo',
@@ -9,12 +9,12 @@ import { transition, style, trigger, animate } from '@angular/animations';
   styleUrls: ['./demo.component.scss'],
   animations: [
     trigger('fade', [
+      state('void', style({opacity: 0 })),
       transition('void => *', [
-        style({opacity: 0 }),
         animate(2000)
       ]),
       transition('* => void', [
-        animate(2000, style({opacity: 0 }))
+        animate(2000)
       ])
   ])
 ]
