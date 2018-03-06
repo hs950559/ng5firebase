@@ -1,7 +1,5 @@
-<div class="row mt-2">
-  <div class="col-sm-6">
-    <h1>All Courses</h1>
-  </div>
+
+<div class="row">
   <div class="col-sm-6">
     <div class="form-row align-items-center mt-2">
       <div class="col-auto">
@@ -12,16 +10,40 @@
       </div>
     </div>
   </div>
-
-  <div class="col-sm-12">
-    <ul class="list-group">
-      <li class="list-group-item" *ngFor="let course of courses$ | async">
-        {{ course }}
-      </li>
-    </ul>
+  <div class="col-sm-6">
+    <button class="btn btn-danger float-right mt-2" (click)="removeAllBook()">
+      <i class="ti-close"></i> Remove all courses
+    </button>
   </div>
 </div>
-
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>ID(key)</th>
+      <th>Author</th>
+      <th>Students</th>
+      <th>Is Premium Member</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let course of courses | async">
+      <td>{{ course | json }}</td>
+      <td>{{ course.author }}</td>
+      <td>{{ course.students}}</td>
+      <td>{{ course.isPremium }}</td>
+      <td>
+        <button class="btn btn-primary">
+          <i class="ti-pencil" (click)="updateCourse(course)"></i>
+        </button>
+        <button class="btn btn-danger" (click)="removeCourse(course)" *ngIf="course.key !== '1'">
+          <i class="ti-close"></i>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<!--
 <h1 class="mt-2">Get Single Author</h1>
 <p>{{ author$ | async | json }}</p>
 <ul class="list-group" *ngIf="author$ | async as author">
@@ -34,4 +56,4 @@
   <li class="list-group-item">
     {{ author.isPremium }}
   </li>
-</ul>
+</ul> -->
