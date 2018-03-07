@@ -11,7 +11,9 @@
       </h5>
     </div>
 
-    <div class="collapse show" *ngIf="isExpanded">
+    <div class="collapse show"
+    [@expandCollapse]="isExpanded ? 'expanded': 'collapsed'"
+    [hidden]="!isExpanded">
       <div class="card-body">
         <ng-content></ng-content>
       </div>
