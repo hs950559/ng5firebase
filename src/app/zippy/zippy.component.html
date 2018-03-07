@@ -1,0 +1,20 @@
+<div id="accordion">
+  <div class="card">
+    <div class="card-header">
+      <h5 class="mb-0" [class.expanded]="isExpanded"
+      (click)="toggle()">
+        {{ title }}
+        <i class="float-right" [ngClass]="{
+          'ti-angle-down': isExpanded,
+          'ti-angle-right': !isExpanded
+        }"></i>
+      </h5>
+    </div>
+
+    <div class="collapse show" *ngIf="isExpanded">
+      <div class="card-body">
+        <ng-content></ng-content>
+      </div>
+    </div>
+  </div>
+</div>

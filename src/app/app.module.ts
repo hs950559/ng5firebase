@@ -12,6 +12,7 @@ import { HomeComponent } from './home/home.component';
 import { ContactComponent } from './contact/contact.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { DemoComponent } from './demo/demo.component';
+import { ZippyComponent } from './zippy/zippy.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { DemoComponent } from './demo/demo.component';
     HomeComponent,
     ContactComponent,
     PageNotFoundComponent,
-    DemoComponent
+    DemoComponent,
+    ZippyComponent
   ],
   imports: [
     BrowserModule,
