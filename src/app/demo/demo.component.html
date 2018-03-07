@@ -15,34 +15,36 @@
     </button>
   </div>
 </div>
-<h1>All Books</h1>
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th>ID(key)</th>
-      <th>Title</th>
-      <th>Author</th>
-      <th>Price</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let book of books | async"
-    (@slide.start)="animationStart($event)"
-    (@slide.done)="animationDone($event)"
-    >
-      <td>{{ book | json }}</td>
-      <td>{{ book.title }}</td>
-      <td>{{ book.author}}</td>
-      <td>{{ book.price }}</td>
-      <td>
-        <button class="btn btn-primary">
-          <i class="ti-pencil" (click)="updateBook(book)"></i>
-        </button>
-        <button class="btn btn-danger" (click)="removeBook(book)" *ngIf="book.key !== '1'">
-          <i class="ti-close"></i>
-        </button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<div @parentAnimation>
+  <h1>All Books</h1>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>ID(key)</th>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Price</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let book of books | async"
+      (@slide.start)="animationStart($event)"
+      (@slide.done)="animationDone($event)"
+      >
+        <td>{{ book | json }}</td>
+        <td>{{ book.title }}</td>
+        <td>{{ book.author}}</td>
+        <td>{{ book.price }}</td>
+        <td>
+          <button class="btn btn-primary">
+            <i class="ti-pencil" (click)="updateBook(book)"></i>
+          </button>
+          <button class="btn btn-danger" (click)="removeBook(book)" *ngIf="book.key !== '1'">
+            <i class="ti-close"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

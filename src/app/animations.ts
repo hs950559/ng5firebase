@@ -47,6 +47,6 @@ export let fade = trigger('fade', [
 ]);
 
 export let slide = trigger('slide', [
-  transition(':enter', slideInLeftAnimation),
-  transition(':leave', bounceOutLeftAnimation)
+  transition(':enter', useAnimation(slideInLeftAnimation)),
+  transition(':leave', useAnimation(bounceOutLeftAnimation))
 ]);

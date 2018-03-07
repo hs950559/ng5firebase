@@ -1,14 +1,22 @@
 import { Component } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
-import { transition, style, trigger, animate, state, keyframes, animation, useAnimation } from '@angular/animations';
-import {slide } from '../animations';
+import { transition, style, trigger, animate, state, keyframes, animation, useAnimation, query, animateChild } from '@angular/animations';
+import { slide } from '../animations';
 
 @Component({
   selector: 'app-demo',
   templateUrl: './demo.component.html',
   styleUrls: ['./demo.component.scss'],
   animations: [
+    trigger('parentAnimation', [
+      transition(':enter', [
+        query('h1', [
+          style({ transform: 'translateY(-20px)'}),
+          animate(1000)
+        ])
+      ])
+    ]),
     slide
   ]
 })
