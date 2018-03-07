@@ -1,20 +1,15 @@
 import { Component } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
-import { transition, style, trigger, animate, state } from '@angular/animations';
+import { slide } from '../animations';
 
 @Component({
   selector: 'app-demo',
   templateUrl: './demo.component.html',
   styleUrls: ['./demo.component.scss'],
   animations: [
-    trigger('fade', [
-      state('void', style({opacity: 0 })),
-      transition('void <=> *', [
-        animate(2000)
-      ])
-  ])
-]
+    slide
+  ]
 })
 export class DemoComponent {
   booksRef: AngularFireList<any>;
