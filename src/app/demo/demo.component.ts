@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
-import { transition, style, trigger, animate, state, keyframes, animation } from '@angular/animations';
-import { bounceOutLeft } from '../animations';
+import { transition, style, trigger, animate, state, keyframes, animation, useAnimation } from '@angular/animations';
+import { bounceOutLeftAnimation, fadeInAnimation } from '../animations';
 
 @Component({
   selector: 'app-demo',
@@ -10,14 +10,15 @@ import { bounceOutLeft } from '../animations';
   styleUrls: ['./demo.component.scss'],
   animations: [
     trigger('customAnimation', [
-      transition(':enter', [
-        style({transform: 'translateX(-20px)'}),
-        animate(1000)
-      ]),
+      transition(':enter', useAnimation(fadeInAnimation, {
+        params: {
+          duration: '600ms'
+        }
+      })),
       transition(':leave', [
         style({backgroundColor: 'red'}),
         animate(2000),
-        bounceOutLeft
+        bounceOutLeftAnimation
       ])
     ])
   ]

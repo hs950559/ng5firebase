@@ -1,6 +1,6 @@
-import { transition, style, trigger, animate, state, keyframes, animation } from '@angular/animations';
+import { transition, style, trigger, animate, state, keyframes, animation, useAnimation } from '@angular/animations';
 
-export let bounceOutLeft = animation(
+export let bounceOutLeftAnimation = animation(
   animate('5s cubic-bezier(1,.25,.05,.99)', keyframes([
     // 20%
     style({
@@ -17,11 +17,32 @@ export let bounceOutLeft = animation(
   ]))
 );
 
+export let fadeInAnimation = animation([
+  style({opacity: 0 }),
+  animate('{{ duration }} {{ easing }}')
+], {
+  params: {
+    duration: '2s',
+    easing: 'ease-out'
+  }
+});
+
+export let fadeOutAnimation = animation([
+  animate('{{ duration }} {{ easing }}', style({opacity: 0 }))
+], {
+  params: {
+    duration: '2s',
+    easing: 'ease-in'
+  }
+});
+
 export let fade = trigger('fade', [
-  state('void', style({opacity: 0 })),
-  transition('void <=> *', [
-    animate(2000)
-  ])
+  transition(':enter', fadeInAnimation),
+  transition(':leave', useAnimation(fadeOutAnimation, {
+    params: {
+      duration: '100ms'
+    }
+  }))
 ]);
 
 export let slide = trigger('slide', [
@@ -29,5 +50,5 @@ export let slide = trigger('slide', [
     style({transform: 'translateX(-20px)'}),
     animate(300)
   ]),
-  transition(':leave', bounceOutLeft)
+  transition(':leave', useAnimation(bounceOutLeftAnimation))
 ]);
