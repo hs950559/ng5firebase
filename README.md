@@ -9,3 +9,9 @@ yarn start
 // build & deploy
 yarn deploy:firebase
 ```
+
+## Resources
+
+https://github.com/daneden/animate.css/blob/master/source/bouncing_exits/bounceOutLeft.css
+http://cubic-bezier.com/#1,.25,.05,.99
+
