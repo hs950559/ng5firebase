@@ -2,28 +2,14 @@ import { Component } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 import { transition, style, trigger, animate, state, keyframes, animation, useAnimation } from '@angular/animations';
-import { bounceOutLeftAnimation, fadeInAnimation } from '../animations';
+import {slide } from '../animations';
 
 @Component({
   selector: 'app-demo',
   templateUrl: './demo.component.html',
   styleUrls: ['./demo.component.scss'],
   animations: [
-    trigger('customAnimation', [
-      transition(':enter', [
-        style({backgroundColor: 'green'}),
-        useAnimation(fadeInAnimation, {
-          params: {
-            duration: '10s'
-          }
-        })
-      ]),
-      transition(':leave', [
-        style({backgroundColor: 'red'}),
-        animate(2000),
-        bounceOutLeftAnimation
-      ])
-    ])
+    slide
   ]
 })
 export class DemoComponent {

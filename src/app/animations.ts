@@ -17,6 +17,11 @@ export let bounceOutLeftAnimation = animation(
   ]))
 );
 
+export let slideInLeftAnimation = animation([
+  style({transform: 'translateX(-120px)'}),
+  animate(2000)
+]);
+
 export let fadeInAnimation = animation([
   style({opacity: 0 }),
   animate('{{ duration }} {{ easing }}')
@@ -42,9 +47,6 @@ export let fade = trigger('fade', [
 ]);
 
 export let slide = trigger('slide', [
-  transition(':enter', [
-    style({transform: 'translateX(-20px)'}),
-    animate(300)
-  ]),
-  transition(':leave', useAnimation(bounceOutLeftAnimation))
+  transition(':enter', slideInLeftAnimation),
+  transition(':leave', bounceOutLeftAnimation)
 ]);
