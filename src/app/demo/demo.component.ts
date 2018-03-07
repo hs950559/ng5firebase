@@ -10,11 +10,14 @@ import { bounceOutLeftAnimation, fadeInAnimation } from '../animations';
   styleUrls: ['./demo.component.scss'],
   animations: [
     trigger('customAnimation', [
-      transition(':enter', useAnimation(fadeInAnimation, {
-        params: {
-          duration: '600ms'
-        }
-      })),
+      transition(':enter', [
+        style({backgroundColor: 'green'}),
+        useAnimation(fadeInAnimation, {
+          params: {
+            duration: '10s'
+          }
+        })
+      ]),
       transition(':leave', [
         style({backgroundColor: 'red'}),
         animate(2000),
@@ -52,5 +55,13 @@ export class DemoComponent {
 
   removeAllBook() {
     this.booksRef.remove();
+  }
+
+  animationStart(event) {
+    console.log('Start ', event);
+  }
+
+  animationDone(event) {
+    console.log('Done ', event);
   }
 }

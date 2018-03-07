@@ -26,7 +26,10 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let book of books | async" @customAnimation>
+    <tr *ngFor="let book of books | async"
+    (@customAnimation.start)="animationStart($event)"
+    (@customAnimation.done)="animationDone($event)"
+    >
       <td>{{ book | json }}</td>
       <td>{{ book.title }}</td>
       <td>{{ book.author}}</td>

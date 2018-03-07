@@ -38,11 +38,7 @@ export let fadeOutAnimation = animation([
 
 export let fade = trigger('fade', [
   transition(':enter', fadeInAnimation),
-  transition(':leave', useAnimation(fadeOutAnimation, {
-    params: {
-      duration: '100ms'
-    }
-  }))
+  transition(':leave', fadeOutAnimation)
 ]);
 
 export let slide = trigger('slide', [
